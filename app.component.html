@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <img [src]="logo" width="80px" height="100px" />
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;Angular Materials Demo</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav class="sidenav" opened="true" mode="side" #drawer>
+    <mat-list>
+        <mat-list-item routerLink="/home">
+          <mat-icon mat-list-icon>home</mat-icon>
+          <h4 mat-line>Home</h4>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item routerLink="/register">
+          <mat-icon mat-list-icon>person_add</mat-icon>
+          <h4 mat-line>Register</h4>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item routerLink="/list">
+          <mat-icon mat-list-icon>people</mat-icon>
+          <h4 mat-line>Participants</h4>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item routerLink="/search">
+          <mat-icon mat-list-icon>search</mat-icon>
+          <h4 mat-line>Search</h4>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item routerLink="/aboutus">
+          <mat-icon mat-list-icon>info</mat-icon>
+          <h4 mat-line>About</h4>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+</mat-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content >
+      <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon> 
+      </button>
+      <router-outlet></router-outlet>      
+  </mat-sidenav-content>
+</mat-sidenav-container>

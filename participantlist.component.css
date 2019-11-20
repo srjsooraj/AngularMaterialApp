@@ -1,0 +1,39 @@
+.mat-card {    
+    width: 100%;    
+    background-color: aliceblue;
+}
+.mat-card-content {
+    width : 100%;
+}
+table {
+    width: 100%;
+}
+.space-between {
+    flex : 1 1 auto;
+}
+
+.table-striped {
+    background-color: aliceblue;
+}
+.mat-raised-button{
+    height: 45px;
+    width : 120px;
+}
+.mat-header-cell { 
+    font-weight: bold;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 16px;
+    background-color:antiquewhite;
+}
+
+.mat-cell {
+    vertical-align: middle;
+}
+.mat-cell-gender {
+    text-align: center;
+}
+.mat-cell-action {
+    text-align: center;
+    width: 120px;
+}

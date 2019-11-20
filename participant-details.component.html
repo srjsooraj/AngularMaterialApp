@@ -1,0 +1,15 @@
+<h2>Participant Details</h2>
+<table class="table table-bordered table-striped">
+        <ng-container *ngIf="participant">
+        <tr><td>Participant Id</td><td>{{participant.participantId}}</td></tr>
+        <tr><td>Participant Name</td><td> {{participant.participantName}} </td></tr>
+        <tr><td>Participant Email</td><td>{{participant.email}}</td></tr>
+        <tr><td> Address</td><td>{{participant.address}}</td></tr>
+        <tr><td>Contact No</td><td>{{participant.contactNo}}</td></tr>
+        <tr><td>Event registered</td><td>{{participant.events}}</td></tr>
+        <tr><td>Gender</td><td>{{participant.gender}}</td></tr>
+        </ng-container>
+        <tr *ngIf="!participant"><Td>{{statusMessage}}</Td></tr>
+</table>
+
+<input type="button" value=" Back " (click)="goBack()"/>

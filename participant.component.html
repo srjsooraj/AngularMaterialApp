@@ -1,0 +1,119 @@
+<mat-card class="mat-card">
+    <mat-card-header>
+        <h3>Event Registration Form</h3>
+    </mat-card-header>
+    <mat-card-content class="mat-card-content">
+        <form [formGroup]="eventForm" (ngSubmit)="registerParticipant()" class="demo-form">
+            <div class="alert-info">{{statusMessage}}</div><br/>
+            <div class="form-group">
+                <mat-form-field class="demo-full-width">
+                    <mat-select name="events" placeholder="Choose Events" formControlName="events">
+                        <mat-option *ngFor="let event of availableEvents" [value]="event">{{event}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="eventForm.controls['events'].hasError('required') && eventForm.controls['events'].touched">
+                        Please choose an event
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="demo-full-width">
+                    <input name="participantName" matInput placeholder="Participant Name"
+                        formControlName="participantName">
+                    <mat-icon matSuffix>person</mat-icon>
+                    <mat-error
+                        *ngIf="eventForm.controls['participantName'].hasError('required') && eventForm.controls['participantName'].touched">
+                        Participantname is mandatory</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="demo-full-width">
+                    <textarea name="address" matInput placeholder="Address" matTextareaAutosize matAutosizeMinRows="3"
+                        matAutosizeMaxRows="3" formControlName="address"></textarea>
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-hint>Minimum 10 to maximum 50 characters allowed.</mat-hint>
+                    <mat-error
+                        *ngIf="eventForm.controls['address'].hasError('required') && eventForm.controls['address'].touched">
+                        Participant address is mandatory
+                    </mat-error>
+                    <mat-error    *ngIf="eventForm.controls['address'].hasError('minlength') && eventForm.controls['address'].touched">
+                        Minimum 10 characters
+                    </mat-error>
+                    <mat-error
+                        *ngIf="eventForm.controls['address'].hasError('maxLength') && eventForm.controls['address'].touched">
+                        Maximum 100 characters
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="demo-full-width">
+                    <input name="email" matInput placeholder="Email" formControlName="email">
+                    <mat-icon matSuffix>alternate_email</mat-icon>
+                    <mat-error
+                        *ngIf="eventForm.controls['email'].hasError('required') && eventForm.controls['email'].touched">
+                        Email Id mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="demo-full-width">
+                    <span matPrefix>+91 &nbsp;</span>
+                    <input name="contactNo" matInput placeholder="Mobile No." formControlName="contactNo">
+                    <mat-icon matSuffix>phone</mat-icon>
+                    <mat-error
+                        *ngIf="eventForm.controls['contactNo'].hasError('required') && eventForm.controls['contactNo'].touched">
+                        Contactno mandatory.
+                    </mat-error>
+                    <mat-error
+                        *ngIf="eventForm.controls['contactNo'].hasError('pattern') && eventForm.controls['contactNo'].touched">
+                        Invalid contact number.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="demo-full-width">
+                    <input name="eventDate" matInput [matDatepicker]="picker1" placeholder="Event date" formControlName="eventDate">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                    <mat-error *ngIf="eventForm.controls['eventDate'].hasError('required') && eventForm.controls['eventDate'].touched" class="alert alert-danger">
+                        Eventdate is mandatory
+                    </mat-error>
+                    <mat-error *ngIf="eventForm.controls['eventDate'].hasError('futuredate') && eventForm.controls['eventDate'].touched" class="alert alert-danger">
+                            Invalid Event Startdate.
+                        </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+            <mat-form-field class="demo-full-width">
+                    <input name="enddate" matInput [matDatepicker]="picker" placeholder="End date" formControlName="enddate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="eventForm.controls['enddate'].hasError('required') && eventForm.controls['enddate'].touched">
+                        Enddate is mandatory
+                    </mat-error>
+                    <mat-error *ngIf="eventForm.controls['enddate'].hasError('futuredate') && eventForm.controls['enddate'].touched">
+                            Invalid Event Enddate.
+                     </mat-error>
+                     <mat-error *ngIf="eventForm.hasError('dateMismatch') && (eventForm.touched || eventForm.dirty)" >
+                            Date mismatch
+                     </mat-error>
+     
+                </mat-form-field>
+            </div>
+            <div class="form-group demo-full-width">
+                <span>Gender&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                <mat-radio-group name="gender" formControlName="gender">
+                    <mat-radio-button value="M">Male</mat-radio-button>&nbsp;&nbsp;
+                    <mat-radio-button value="F">Female</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="form-group  demo-full-width">
+                <span>Interested receive Newsletters?&nbsp;&nbsp;</span>
+                <mat-checkbox name="newsletter" formControlName="newsletter"></mat-checkbox>
+            </div>
+            <div class="form-group  demo-full-width">
+                <button type="submit" mat-raised-button color="primary" [disabled]="eventForm.invalid">Register</button>
+                &nbsp;&nbsp;
+                <button type="reset" mat-raised-button color="primary">Clear</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
